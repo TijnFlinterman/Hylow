@@ -15,7 +15,7 @@ public class PlayerInteractions : MonoBehaviour
             dist = Vector3.Distance(transform.position, coll.transform.position);
             if (dist > distance)
             {
-                Debug.Log("far hit, distance is: " + dist);
+                //Debug.Log("far hit, distance is: " + dist);
 
                 if (transform.position.x < coll.transform.position.x)
                 {
@@ -38,7 +38,8 @@ public class PlayerInteractions : MonoBehaviour
             }
             if (dist < distance)
             {
-                Debug.Log("close hit, distance is: " + dist);
+                //Debug.Log("close hit, distance is: " + dist);
+                Debug.Log("Death");
 
                 // add player death
 
