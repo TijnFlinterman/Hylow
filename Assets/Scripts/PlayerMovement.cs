@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] [Range(0f, 10f)] float movementSpeed = 5f;
     [SerializeField] [Range(0f, 10f)] float strafeSpeed = 5f;
     public CharacterController controller;
+    public PlayerInteractions inter;
 
     Vector3 velocity;
 

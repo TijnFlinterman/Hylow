@@ -8,6 +8,21 @@ public class PlayerInteractions : MonoBehaviour
     private float dist;
     [SerializeField] [Range(0f, 1f)] float distance = 0.75f;
 
+    private CharacterController character;
+    float mass = 3.0F;
+    Vector3 impact = Vector3.zero;
+
+    void Start()
+    {
+        character = GetComponent<CharacterController>();
+    }
+
+    private void Update()
+    {
+        if (impact.magnitude > 0.2F) character.Move(impact * Time.deltaTime);
+        impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
+    }
+
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == "Zombie")
@@ -22,7 +37,8 @@ public class PlayerInteractions : MonoBehaviour
                     Debug.Log("Left");
                     if (hasBumped == false)
                     {
-                        BumpLeft();
+                        AddImpact(Vector3.left, 20);
+                        AddImpact(Vector3.forward, 10);
                         hasBumped = true;
                     }
                 }
@@ -31,7 +47,8 @@ public class PlayerInteractions : MonoBehaviour
                     Debug.Log("Right");
                     if (hasBumped == false)
                     {
-                        BumpRight();
+                        AddImpact(Vector3.right, 20);
+                        AddImpact(Vector3.forward, 10);
                         hasBumped = true;
                     }
                 }
@@ -53,7 +70,8 @@ public class PlayerInteractions : MonoBehaviour
                 Debug.Log("Left");
                 if (hasBumped == false)
                 {
-                    BumpLeft();
+                    AddImpact(Vector3.left, 20);
+                    AddImpact(Vector3.forward, 10);
                     hasBumped = true;
                 }
             }
@@ -62,20 +80,19 @@ public class PlayerInteractions : MonoBehaviour
                 Debug.Log("Right");
                 if (hasBumped == false)
                 {
-                    BumpRight();
+                    AddImpact(Vector3.right, 20);
+                    AddImpact(Vector3.forward, 10);
                     hasBumped = true;
                 }
             }
         }
     }
 
-    void BumpLeft()
+    public void AddImpact(Vector3 dir, float force)
     {
-    
-    }
-    void BumpRight()
-    {
-    
+        dir.Normalize();
+        if (dir.y < 0) dir.y = -dir.y; // reflect down force on the ground
+        impact += dir.normalized * force / mass;
     }
 
     private void OnTriggerExit(Collider coll)

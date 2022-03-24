@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7914615635639431458}
   - component: {fileID: 7914615635639431459}
   - component: {fileID: 7914615635639431469}
-  - component: {fileID: 7914615635639431470}
   - component: {fileID: 7914615635639431456}
+  - component: {fileID: 7914615635639431470}
   - component: {fileID: 7914615635639431468}
   m_Layer: 0
   m_Name: PlayerPrefab
@@ -102,6 +102,19 @@ MonoBehaviour:
   movementSpeed: 6.17
   strafeSpeed: 4.18
   controller: {fileID: 7914615635639431470}
+--- !u!114 &7914615635639431456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914615635639431471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a0e25b6c002b141bf3be9c744eec28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0.75
 --- !u!143 &7914615635639431470
 CharacterController:
   m_ObjectHideFlags: 0
@@ -120,19 +133,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7914615635639431456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7914615635639431471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86a0e25b6c002b141bf3be9c744eec28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 0.75
 --- !u!65 &7914615635639431468
 BoxCollider:
   m_ObjectHideFlags: 0
