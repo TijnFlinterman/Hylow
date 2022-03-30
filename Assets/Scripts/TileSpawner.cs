@@ -31,7 +31,7 @@ public class TileSpawner : MonoBehaviour
     }
     void Update()
     {
-
+     
         if (playerTransform.position.z > zSpawn - (numberOfTiles * tileLength))
         {
             SpawnTile(Random.Range(1, tilePrefabs.Length));
@@ -40,23 +40,25 @@ public class TileSpawner : MonoBehaviour
 
                 SpawnTileX(Random.Range(1, tilePrefabs.Length), tileWith, tileLength);
                 SpawnTileX(Random.Range(1, tilePrefabs.Length), tileWith, tileLength + 30);
+                SpawnTileX(Random.Range(1, tilePrefabs.Length), tileWith, -tileLength + 40);
             }
             if (playerTransform.position.x < xSpawn)
             {
 
                 SpawnTileX(Random.Range(1, tilePrefabs.Length), tileWith - 80, tileLength);
                 SpawnTileX(Random.Range(1, tilePrefabs.Length), tileWith - 80, tileLength + 30);
+                SpawnTileX(Random.Range(1, tilePrefabs.Length), tileWith - 80, -tileLength + 40);
             }
         }
       
-        if (TilesList.Count > 15)
+        if (TilesList.Count > 25)
         {
 
             Destroy(TilesList[0]);
             TilesList.RemoveAt(0);
         }
     }
-
+ 
     public void SpawnTile(int tileIndex)
     {
         go = Instantiate(tilePrefabs[tileIndex], transform.forward * zSpawn, tileMap.transform.rotation);
@@ -72,21 +74,21 @@ public class TileSpawner : MonoBehaviour
         go.transform.position = new Vector3(X, 0, zSpawn - min);
         go.transform.parent = tileMap.transform;
 
-        if (playerTransform.position.x > tileWith)
+        if (playerTransform.position.x > tileWith - 10)
         {
             print("great");
            spawnPosX = tileWith;
             xSpawn = tileWith + 15;
             tileWith = tileWith + 40;
-        }
+        }print(tileWith);
         if (playerTransform.position.x < tileWith -40)
         {
 
             print("greatL");
             spawnPosX = tileWith - 80;
             xSpawn = tileWith - 15;
-            tileWith = tileWith - 40;
-
+            tileWith = -tileWith + 40;
+            print(tileWith);
         }
         TilesList.Add(go);
     }
