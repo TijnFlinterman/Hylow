@@ -50,7 +50,7 @@ public class TreeSpawner : MonoBehaviour
                 print("poef " + currentObject);
                 Destroy(currentObject);
             }
-            print(dis);
+            
         }
     }
     void OnDestroy()

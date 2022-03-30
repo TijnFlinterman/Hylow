@@ -8,7 +8,8 @@ public class PlayerInteractions : MonoBehaviour
     [SerializeField] [Range(0f, 1f)] float distance = 0.75f;
     [SerializeField] [Range(10f, 50f)] float forceSideways = 20;
     [SerializeField] [Range(10f, 50f)] float forceForward = 10;
-
+    PlayerMovement _playerMovement;
+    CamMovement _camMovement;
     private CharacterController character;
     float mass = 3.0F;
     Vector3 impact = Vector3.zero;
@@ -16,6 +17,8 @@ public class PlayerInteractions : MonoBehaviour
     void Start()
     {
         character = GetComponent<CharacterController>();
+        _playerMovement = GetComponent<PlayerMovement>();
+        _camMovement = GetComponent<CamMovement>();
     }
 
     private void Update()
@@ -28,6 +31,7 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (coll.gameObject.tag == "Zombie")
         {
+          _camMovement.gotBumped = true;
             dist = Vector3.Distance(transform.position, coll.transform.position);
             if (dist > distance)
             {
@@ -66,11 +70,13 @@ public class PlayerInteractions : MonoBehaviour
 
         if (coll.gameObject.tag == "Tree")
         {
+            _camMovement.gotBumped = true;
             if (transform.position.x < coll.transform.position.x)
             {
                 Debug.Log("Left");
                 if (hasBumped == false)
                 {
+                    _camMovement.bottem.rotation = new Quaternion(_camMovement.bottem.rotation.x, 0, -25, 0);
                     AddImpact(Vector3.left, forceSideways);
                     AddImpact(Vector3.forward, forceForward);
                     hasBumped = true;
@@ -81,6 +87,7 @@ public class PlayerInteractions : MonoBehaviour
                 Debug.Log("Right");
                 if (hasBumped == false)
                 {
+                   // _camMovement.bottem.rotation. = Quaternion(_camMovement.bottem.rotation.x, 0, 25, 0);
                     AddImpact(Vector3.right, forceSideways);
                     AddImpact(Vector3.forward, forceForward);
                     hasBumped = true;
