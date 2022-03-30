@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerInteractions : MonoBehaviour
 {
@@ -58,7 +57,7 @@ public class PlayerInteractions : MonoBehaviour
                 //Debug.Log("close hit, distance is: " + dist);
                 Debug.Log("Death");
 
-                // add player death
+                SceneManager.LoadScene("PostGameMenu");
 
             }
         }
