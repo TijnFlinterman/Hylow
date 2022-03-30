@@ -226,7 +226,7 @@ Animator:
   m_GameObject: {fileID: 919132148828114944}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: baad7eaf6c30eb246aed8d85d0b778e0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2cf4d1e15e911d643afc1ced79c9c441, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 543450652818983610}
   - component: {fileID: 881306963}
   m_Layer: 0
-  m_Name: Zombie Neck Bite
+  m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

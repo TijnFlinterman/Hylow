@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public PlayerInteractions inter;
     public Transform spawnpoint;
-    public float metersWalked;
+    private float metersWalked;
 
     Vector3 velocity;
 
