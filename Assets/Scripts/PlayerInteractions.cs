@@ -6,6 +6,8 @@ public class PlayerInteractions : MonoBehaviour
     private bool hasBumped;
     private float dist;
     [SerializeField] [Range(0f, 1f)] float distance = 0.75f;
+    [SerializeField] [Range(10f, 50f)] float forceSideways = 20;
+    [SerializeField] [Range(10f, 50f)] float forceForward = 10;
 
     private CharacterController character;
     float mass = 3.0F;
@@ -36,8 +38,8 @@ public class PlayerInteractions : MonoBehaviour
                     Debug.Log("Left");
                     if (hasBumped == false)
                     {
-                        AddImpact(Vector3.left, 20);
-                        AddImpact(Vector3.forward, 10);
+                        AddImpact(Vector3.left, forceSideways);
+                        AddImpact(Vector3.forward, forceForward);
                         hasBumped = true;
                     }
                 }
@@ -46,8 +48,8 @@ public class PlayerInteractions : MonoBehaviour
                     Debug.Log("Right");
                     if (hasBumped == false)
                     {
-                        AddImpact(Vector3.right, 20);
-                        AddImpact(Vector3.forward, 10);
+                        AddImpact(Vector3.right, forceSideways);
+                        AddImpact(Vector3.forward, forceForward);
                         hasBumped = true;
                     }
                 }
@@ -69,8 +71,8 @@ public class PlayerInteractions : MonoBehaviour
                 Debug.Log("Left");
                 if (hasBumped == false)
                 {
-                    AddImpact(Vector3.left, 20);
-                    AddImpact(Vector3.forward, 10);
+                    AddImpact(Vector3.left, forceSideways);
+                    AddImpact(Vector3.forward, forceForward);
                     hasBumped = true;
                 }
             }
@@ -79,8 +81,8 @@ public class PlayerInteractions : MonoBehaviour
                 Debug.Log("Right");
                 if (hasBumped == false)
                 {
-                    AddImpact(Vector3.right, 20);
-                    AddImpact(Vector3.forward, 10);
+                    AddImpact(Vector3.right, forceSideways);
+                    AddImpact(Vector3.forward, forceForward);
                     hasBumped = true;
                 }
             }
