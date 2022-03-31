@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TerrainControllerSimple : MonoBehaviour {
+public class TerrainControllerSimple : MonoBehaviour
+{
 
     [SerializeField]
     private GameObject terrainTilePrefab = null;
     [SerializeField]
     private Vector3 terrainSize = new Vector3(20, 1, 20);
-    [SerializeField]
-
-    private float cellSize = 1;
     [SerializeField]
     private int radiusToRender = 5;
     [SerializeField]
@@ -24,38 +22,39 @@ public class TerrainControllerSimple : MonoBehaviour {
     private Vector2[] previousCenterTiles;
     private List<GameObject> previousTileObjects = new List<GameObject>();
 
-    private void Start() {
+    private void Start()
+    {
         InitialLoad();
     }
 
-    public void InitialLoad() {
+    public void InitialLoad()
+    {
         DestroyTerrain();
-
-        //choose a place on perlin noise (which loops after 256)
         startOffset = new Vector2(Random.Range(0f, 256f), Random.Range(0f, 256f));
     }
 
-    private void Update() {
-        //save the tile the player is on
+    private void Update()
+    {
         Vector2 playerTile = TileFromPosition(playerTransform.position);
-        //save the tiles of all tracked objects in gameTransforms (including the player)
         List<Vector2> centerTiles = new List<Vector2>();
         centerTiles.Add(playerTile);
         foreach (Transform t in gameTransforms)
             centerTiles.Add(TileFromPosition(t.position));
 
         //if no tiles exist yet or tiles should change
-        if (previousCenterTiles == null || HaveTilesChanged(centerTiles)) {
+        if (previousCenterTiles == null || HaveTilesChanged(centerTiles))
+        {
             List<GameObject> tileObjects = new List<GameObject>();
             //activate new tiles
-            foreach (Vector2 tile in centerTiles) {
+            foreach (Vector2 tile in centerTiles)
+            {
                 bool isPlayerTile = tile == playerTile;
                 int radius = isPlayerTile ? radiusToRender : 1;
                 for (int i = -radius; i <= radius; i++)
                     for (int j = -radius; j <= radius; j++)
                         ActivateOrCreateTile((int)tile.x + i, (int)tile.y + j, tileObjects);
             }
-            //deactivate old tiles
+
             foreach (GameObject g in previousTileObjects)
                 if (!tileObjects.Contains(g))
                     Destroy(g);
@@ -66,20 +65,24 @@ public class TerrainControllerSimple : MonoBehaviour {
         previousCenterTiles = centerTiles.ToArray();
     }
 
-    //Helper methods below
 
-    private void ActivateOrCreateTile(int xIndex, int yIndex, List<GameObject> tileObjects) {
-        if (!terrainTiles.ContainsKey(new Vector2(xIndex, yIndex))) {
+    private void ActivateOrCreateTile(int xIndex, int yIndex, List<GameObject> tileObjects)
+    {
+        if (!terrainTiles.ContainsKey(new Vector2(xIndex, yIndex)))
+        {
             tileObjects.Add(CreateTile(xIndex, yIndex));
-        } else {
+        }
+        else
+        {
             GameObject t = terrainTiles[new Vector2(xIndex, yIndex)];
             tileObjects.Add(t);
-            
         }
     }
 
-    private GameObject CreateTile(int xIndex, int yIndex) {
-        GameObject terrain = Instantiate(
+    private GameObject CreateTile(int xIndex, int yIndex)
+    {
+        GameObject terrain = Instantiate
+        (
             terrainTilePrefab,
             new Vector3(terrainSize.x * xIndex, terrainSize.y, terrainSize.z * yIndex),
             Quaternion.identity
@@ -88,28 +91,16 @@ public class TerrainControllerSimple : MonoBehaviour {
 
         terrainTiles.Add(new Vector2(xIndex, yIndex), terrain);
 
-  
-
         return terrain;
     }
 
-    private Vector2 NoiseOffset(int xIndex, int yIndex) {
-        Vector2 noiseOffset = new Vector2(
-          
-        );
-        //account for negatives (ex. -1 % 256 = -1). needs to loop around to 255
-        if (noiseOffset.x < 0)
-            noiseOffset = new Vector2(noiseOffset.x + 256, noiseOffset.y);
-        if (noiseOffset.y < 0)
-            noiseOffset = new Vector2(noiseOffset.x, noiseOffset.y + 256);
-        return noiseOffset;
-    }
-
-    private Vector2 TileFromPosition(Vector3 position) {
+    private Vector2 TileFromPosition(Vector3 position)
+    {
         return new Vector2(Mathf.FloorToInt(position.x / terrainSize.x + .5f), Mathf.FloorToInt(position.z / terrainSize.z + .5f));
     }
 
-    private bool HaveTilesChanged(List<Vector2> centerTiles) {
+    private bool HaveTilesChanged(List<Vector2> centerTiles)
+    {
         if (previousCenterTiles.Length != centerTiles.Count)
             return true;
         for (int i = 0; i < previousCenterTiles.Length; i++)
@@ -118,16 +109,17 @@ public class TerrainControllerSimple : MonoBehaviour {
         return false;
     }
 
-    public void DestroyTerrain() {
+    public void DestroyTerrain()
+    {
         foreach (KeyValuePair<Vector2, GameObject> kv in terrainTiles)
             Destroy(kv.Value);
         terrainTiles.Clear();
     }
 
-    private static string TrimEnd(string str, string end) {
+    private static string TrimEnd(string str, string end)
+    {
         if (str.EndsWith(end))
             return str.Substring(0, str.LastIndexOf(end));
         return str;
     }
-
 }

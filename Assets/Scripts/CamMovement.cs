@@ -4,40 +4,29 @@ using UnityEngine;
 
 public class CamMovement : MonoBehaviour
 {
-    [SerializeField]GameObject cam;
+    [SerializeField] GameObject cam;
     public Transform right, left, Up, bottem;
     public bool gotBumped;
     public bool isMoveing;
     public float lookUpSpeed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void Tilt(int _tiltAmount)
     {
-        
-    }
-    public void Tilt(int a)
-    {
-        switch (a)
+        switch (_tiltAmount)
         {
-       
-                case 1: // Right
-                if(!gotBumped)
+            case 1: // Right
+                if (!gotBumped)
                     cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, right.rotation, 8 * Time.deltaTime);
                 isMoveing = true;
                 break;
 
-                case 2: //left
+            case 2: //left
                 if (!gotBumped)
                     cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, left.rotation, 8f * Time.deltaTime);
                 isMoveing = true;
-            break;
+                break;
 
-                case 3: // idle
+            case 3: // idle
                 if (!gotBumped)
                 {
                     if (!isMoveing)
@@ -51,27 +40,21 @@ public class CamMovement : MonoBehaviour
                     }
                     if (isMoveing)
                     {
-
                         cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Up.rotation, lookUpSpeed * Time.deltaTime);
-
                     }
                 }
-            break;
+                break;
 
-          
-             case 4: //down
-                 
-        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, bottem.rotation, 5f * Time.deltaTime);
-        if (cam.transform.rotation == bottem.rotation)
-        {
+            case 4: //down
+
+                cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, bottem.rotation, 5f * Time.deltaTime);
+                if (cam.transform.rotation == bottem.rotation)
+                {
                     isMoveing = true;
                     lookUpSpeed = 3;
-            gotBumped = false;
-        }
+                    gotBumped = false;
+                }
                 break;
-      }
+        }
     }
-        
-    
-    
 }

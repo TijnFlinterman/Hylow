@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject cam;
     public CharacterController controller;
     public Transform spawnPoint;
-    private float metersWalked;
+    public float metersWalked;
     public bool gotBumped;
     Vector3 velocity;
     CamMovement _camMovement;
@@ -27,16 +27,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (_camMovement.gotBumped == true)
         {
-
             _camMovement.Tilt(4);
-
-            print("Doing 4");
         }
-
     }
-    void ForwardMovement()
-    {
 
+    private void ForwardMovement()
+    {
         Vector3 move = transform.forward * movementSpeed;
         velocity.z = move.z;
     }
@@ -50,29 +46,21 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-
-
-
-
     void CamMovement(float x)
     {
-
         if (_camMovement.gotBumped == false)
         {
             if (x > 0.2)
             {
                 _camMovement.Tilt(1);
-
             }
             else if (x < -0.2f)
             {
-
                 _camMovement.Tilt(2);
             }
             else
             {
                 _camMovement.Tilt(3);
-
             }
         }
     }
