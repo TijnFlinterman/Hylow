@@ -42,7 +42,6 @@ public class PlayerInteractions : MonoBehaviour
                     Debug.Log("Left");
                     if (hasBumped == false)
                     {
-                        _camMovement.bottem.eulerAngles = new Vector3(40, -25, 0);
                         AddImpact(Vector3.left, forceSideways);
                         AddImpact(Vector3.forward, forceForward);
                         hasBumped = true;
@@ -53,7 +52,6 @@ public class PlayerInteractions : MonoBehaviour
                     Debug.Log("Right");
                     if (hasBumped == false)
                     {
-                        _camMovement.bottem.eulerAngles = new Vector3(40, 25, 0);
                         AddImpact(Vector3.right, forceSideways);
                         AddImpact(Vector3.forward, forceForward);
                         hasBumped = true;
