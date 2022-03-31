@@ -70,15 +70,15 @@ MonoBehaviour:
       screenEdgeMask:
         intensity: 0.03
   depthOfField:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       focusDistance: 11.48
-      aperture: 2.5
-      focalLength: 71
+      aperture: 30.8
+      focalLength: 1
       useCameraFov: 0
       kernelSize: 0
   motionBlur:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       shutterAngle: 160
       sampleCount: 16
@@ -98,7 +98,7 @@ MonoBehaviour:
       logMin: -10
       logMax: 4
   bloom:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       bloom:
         intensity: 0.17
@@ -123,10 +123,10 @@ MonoBehaviour:
       basic:
         postExposure: 0
         temperature: 0
-        tint: -7
+        tint: 0
         hueShift: 0
         saturation: 0
-        contrast: 0.82
+        contrast: 1
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
@@ -323,7 +323,7 @@ MonoBehaviour:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.543
+      intensity: 0.393
       smoothness: 0.2
       roundness: 1
       mask: {fileID: 0}
