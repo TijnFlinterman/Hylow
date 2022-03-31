@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CamMovement : MonoBehaviour
@@ -10,9 +8,9 @@ public class CamMovement : MonoBehaviour
     public bool isMoveing;
     public float lookUpSpeed;
 
-    public void Tilt(int _tiltAmount)
+    public void Tilt(int a)
     {
-        switch (_tiltAmount)
+        switch (a)
         {
             case 1: // Right
                 if (!gotBumped)
@@ -29,19 +27,12 @@ public class CamMovement : MonoBehaviour
             case 3: // idle
                 if (!gotBumped)
                 {
-                    if (!isMoveing)
-                    {
-                        cam.GetComponent<CamWobble>().camWobbeling();
-                    }
                     if (cam.transform.rotation == Up.rotation)
                     {
                         lookUpSpeed = 7;
                         isMoveing = false;
                     }
-                    if (isMoveing)
-                    {
-                        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Up.rotation, lookUpSpeed * Time.deltaTime);
-                    }
+                    cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Up.rotation, lookUpSpeed * Time.deltaTime);
                 }
                 break;
 

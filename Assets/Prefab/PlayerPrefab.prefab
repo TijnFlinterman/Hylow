@@ -483,6 +483,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7914615636065609979}
     m_Modifications:
+    - target: {fileID: 2675361471546267317, guid: 5eeae2c2aa776ac46be67ae162d9512d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4719076941979770649, guid: 5eeae2c2aa776ac46be67ae162d9512d, type: 3}
       propertyPath: m_Name
       value: Chainsaw
@@ -609,7 +613,7 @@ Animator:
   m_GameObject: {fileID: 5951333095829126391}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e65b4692002c3bb419928300bd842b61, type: 2}
+  m_Controller: {fileID: 9100000, guid: f3c942d54dd52b1409159d6a639f0578, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
