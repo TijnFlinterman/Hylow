@@ -16,6 +16,8 @@ public class TreeSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        treeAmount = GameManager.main._diffculty.spawnTreeAmount;
+        zombieAmount = GameManager.main._diffculty.spawnZombieAmount;
         for (int i = 0; i < treeAmount; i++)
         {
             spawnPos = new Vector3(Random.Range(pos.transform.position.x, pos.transform.position.x + unitDisTerrain), 0, Random.Range(pos.transform.position.z, pos.transform.position.z + unitDisTerrain));
@@ -23,12 +25,15 @@ public class TreeSpawner : MonoBehaviour
             spawnedObjects.Add(Go);
             posCheck(Go);
         }
-        for (int i = 0; i < zombieAmount; i++)
+        if (GameManager.main.canSpawnZombies)
         {
-            spawnPosZ = new Vector3(Random.Range(pos.transform.position.x, pos.transform.position.x + unitDisTerrain), 0, Random.Range(pos.transform.position.z, pos.transform.position.z + unitDisTerrain));
-            GameObject Go = Instantiate(zombiePre, spawnPosZ, Quaternion.identity);
-            spawnedObjects.Add(Go);
-            posCheck(Go);
+            for (int i = 0; i < zombieAmount; i++)
+            {
+                spawnPosZ = new Vector3(Random.Range(pos.transform.position.x, pos.transform.position.x + unitDisTerrain), 0, Random.Range(pos.transform.position.z, pos.transform.position.z + unitDisTerrain));
+                GameObject Go = Instantiate(zombiePre, spawnPosZ, Quaternion.identity);
+                spawnedObjects.Add(Go);
+                posCheck(Go);
+            }
         }
     }
 
