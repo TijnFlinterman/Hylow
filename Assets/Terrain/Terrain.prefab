@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Trees:
   - {fileID: 7978347199370012344, guid: f049e059ad1d9764292bf9be667e09a7, type: 3}
-  zombiePre: {fileID: 424623069865114878, guid: c77e1cabe04049847b236896e3331a77, type: 3}
+  zombiePre: {fileID: 7595098900428548294, guid: eee53eb0665602449be48e2df6202677, type: 3}
   treeAmount: 2
   zombieAmount: 12
   unitDisTerrain: 20

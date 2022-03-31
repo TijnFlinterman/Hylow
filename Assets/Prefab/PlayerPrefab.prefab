@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 7914615635639431456}
   - component: {fileID: 7914615635639431470}
   - component: {fileID: 7914615635639431468}
+  - component: {fileID: -6625843513185339740}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -229,11 +230,8 @@ MonoBehaviour:
   controller: {fileID: 7914615635639431470}
   inter: {fileID: 0}
   spawnpoint: {fileID: 0}
-  right: {fileID: 5649421118228288101}
-  left: {fileID: 8240201001342493298}
-  Up: {fileID: 8628052816489949477}
-  bottem: {fileID: 0}
   metersWalked: 0
+  gotBumped: 0
 --- !u!114 &7914615635639431456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +278,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.908689, y: 1.9890034, z: 1.1005415}
   m_Center: {x: 0.021268804, y: -0.00549829, z: 0.08543252}
+--- !u!114 &-6625843513185339740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914615635639431471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69bd6747ae6432d4e989c8fa491e1dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 7914615636065609956}
+  right: {fileID: 5649421118228288101}
+  left: {fileID: 8240201001342493298}
+  Up: {fileID: 8628052816489949477}
+  bottem: {fileID: 5402494902931940706}
+  gotBumped: 0
+  lookUpSpeed: 0
 --- !u!1 &7914615635930758886
 GameObject:
   m_ObjectHideFlags: 0
