@@ -48,6 +48,7 @@ public class TreeSpawner : MonoBehaviour
             if (dis < 4 && dis > 0)
             {
                 print("poef " + currentObject);
+                spawnedObjects.Remove(currentObject);
                 Destroy(currentObject);
             }
             
