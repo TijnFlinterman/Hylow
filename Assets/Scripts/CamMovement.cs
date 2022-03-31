@@ -7,6 +7,7 @@ public class CamMovement : MonoBehaviour
     [SerializeField]GameObject cam;
     public Transform right, left, Up, bottem;
     public bool gotBumped;
+    public bool isMoveing;
     public float lookUpSpeed;
     // Start is called before the first frame update
     void Start()
@@ -27,20 +28,31 @@ public class CamMovement : MonoBehaviour
                 case 1: // Right
                 if(!gotBumped)
                     cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, right.rotation, 8 * Time.deltaTime);
-            break;
+                isMoveing = true;
+                break;
 
                 case 2: //left
                 if (!gotBumped)
                     cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, left.rotation, 8f * Time.deltaTime);
+                isMoveing = true;
             break;
 
                 case 3: // idle
                 if (!gotBumped)
                 {
-                    cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Up.rotation, lookUpSpeed * Time.deltaTime);
+                    if (!isMoveing)
+                    {
+                        cam.GetComponent<CamWobble>().camWobbeling();
+                    }
                     if (cam.transform.rotation == Up.rotation)
                     {
                         lookUpSpeed = 7;
+                        isMoveing = false;
+                    }
+                    if (isMoveing)
+                    {
+
+                        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Up.rotation, lookUpSpeed * Time.deltaTime);
 
                     }
                 }
@@ -52,7 +64,8 @@ public class CamMovement : MonoBehaviour
         cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, bottem.rotation, 5f * Time.deltaTime);
         if (cam.transform.rotation == bottem.rotation)
         {
-            lookUpSpeed = 3;
+                    isMoveing = true;
+                    lookUpSpeed = 3;
             gotBumped = false;
         }
                 break;
