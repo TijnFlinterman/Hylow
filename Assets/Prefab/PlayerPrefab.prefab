@@ -229,6 +229,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   controller: {fileID: 7914615635639431470}
   spawnPoint: {fileID: 0}
+  metersWalked: 0
   gotBumped: 0
 --- !u!114 &7914615635639431456
 MonoBehaviour:
@@ -622,3 +623,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4562783021116783534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951333095829126391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5877d39b694f3a49bf33fc871f05448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ani: {fileID: 4034004765580741187}
