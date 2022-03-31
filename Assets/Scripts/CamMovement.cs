@@ -48,7 +48,7 @@ public class CamMovement : MonoBehaviour
 
           
              case 4: //down
-                    print("Down");
+                 
         cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, bottem.rotation, 5f * Time.deltaTime);
         if (cam.transform.rotation == bottem.rotation)
         {

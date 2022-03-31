@@ -45,7 +45,7 @@ public class TreeSpawner : MonoBehaviour
         {
             float dis;
             dis = Vector3.Distance(currentObject.transform.position, spawnedObjects[i].transform.position);
-            if (dis < 8 && dis > 0)
+            if (dis < 4 && dis > 0)
             {
                 print("poef " + currentObject);
                 Destroy(currentObject);
