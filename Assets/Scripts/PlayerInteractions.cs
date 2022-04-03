@@ -64,7 +64,6 @@ public class PlayerInteractions : MonoBehaviour
             {
                 //Debug.Log("close hit, distance is: " + dist);
                 Debug.Log("Death");
-
                 SceneManager.LoadScene("PostGameMenu");
 
             }
