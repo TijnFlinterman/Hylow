@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PostGameMenu.unity
     guid: 1090c4153b0a32743a3676ed91b0bf90
+  - enabled: 1
+    path: Assets/Scenes/ScoreScreen.unity
+    guid: 6a009967108d9ab478974b13eac72429
   m_configObjects: {}
