@@ -484,6 +484,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7914615636065609979}
     m_Modifications:
+    - target: {fileID: 844955969945173123, guid: 5eeae2c2aa776ac46be67ae162d9512d, type: 3}
+      propertyPath: m_TagString
+      value: Chainsaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675361471546267317, guid: 5eeae2c2aa776ac46be67ae162d9512d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.005775064
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675361471546267317, guid: 5eeae2c2aa776ac46be67ae162d9512d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.017478103
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675361471546267317, guid: 5eeae2c2aa776ac46be67ae162d9512d, type: 3}
+      propertyPath: m_Size.z
+      value: 0.0032400005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675361471546267317, guid: 5eeae2c2aa776ac46be67ae162d9512d, type: 3}
+      propertyPath: m_Center.x
+      value: 0.00015333704
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675361471546267317, guid: 5eeae2c2aa776ac46be67ae162d9512d, type: 3}
+      propertyPath: m_Center.y
+      value: -0.0047861184
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675361471546267317, guid: 5eeae2c2aa776ac46be67ae162d9512d, type: 3}
+      propertyPath: m_Center.z
+      value: 0.00030793675
+      objectReference: {fileID: 0}
     - target: {fileID: 2675361471546267317, guid: 5eeae2c2aa776ac46be67ae162d9512d, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -636,3 +664,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ani: {fileID: 4034004765580741187}
+  fuel: 5

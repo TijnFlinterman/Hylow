@@ -4,15 +4,94 @@ using UnityEngine;
 
 public class ZombieBehaviour : MonoBehaviour
 {
-    Animator animator;
-
+    [SerializeField] Animator animator;
+    [SerializeField] Collider Box;
+    [SerializeField] Collider capsul;
+    [SerializeField] AudioClip[] Screams;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource ZombieMoan;
+           int random;
+       int randomScream;
+    GameObject Player;
+    float distance;
+    bool canWalk;
+    bool canAttack;
+    bool canScream;
+    bool isPlayerAudio = false;
     void Start()
-    {
-        animator = GetComponent<Animator>();
-        animator.SetBool("isWalking", true);
+    { 
+        ZombieMoan.time = Random.Range(0,20);
+        ZombieMoan.Play();
+        audioSource.clip = Screams[Random.Range(0, Screams.Length - 1)];
+        Player = GameObject.FindGameObjectWithTag("Player");
+        //animator = GetComponent<Animator>();
+        random = Random.Range(0, 100);
+        randomScream = Random.Range(0, 100);
+        if (random > 50)
+        { 
+        
+          animator.SetBool("isWalking", true);
+            canWalk = true;
+        }
+        if (random > 80 || random < 20)
+        {
+            canAttack = true;
+        
+        }
+        if (randomScream > 80 && canAttack == false)
+        {
+            canScream = true;
+        
+        }
     }
 
     void Update()
     {
+        distance = Vector3.Distance(gameObject.transform.position, Player.transform.position);
+        if (distance < 6 && canAttack)
+        {
+            animator.SetBool("Attack", true);
+            transform.LookAt(Player.transform.position);
+        }
+        if (distance < 15 && canScream)
+        {
+            animator.SetBool("Scream", true);
+            if (!isPlayerAudio)
+            { 
+            audioSource.Play();
+            isPlayerAudio = true;
+            
+            }
+            transform.LookAt(Player.transform.position);
+        }
+    }
+    private void FixedUpdate()
+    {
+
+        if (canWalk)
+        {
+
+            transform.Translate(new Vector3(0,0,0.5f) * Time.deltaTime);
+        }
+    }
+    private void OnTriggerEnter(Collider coll)
+    {
+        if (coll.gameObject.CompareTag("Chainsaw"))
+        {
+            animator.SetBool("dead", true);
+            Box.enabled = false;
+            capsul.enabled = false;
+        }
+            print("Hing Hing");
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Chainsaw"))
+        {
+            animator.SetBool("dead", true);
+            Box.enabled = false;
+            capsul.enabled = false;
+        }
+            print("Hing Hing");
     }
 }
