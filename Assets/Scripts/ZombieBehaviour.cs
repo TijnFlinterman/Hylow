@@ -8,9 +8,11 @@ public class ZombieBehaviour : MonoBehaviour
     [SerializeField] Collider Box;
     [SerializeField] Collider capsul;
     [SerializeField] AudioClip[] Screams;
+    [SerializeField] AudioClip[] Moans;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioSource ZombieMoan;
            int random;
+    [SerializeField] string[] AnimationWalk;
        int randomScream;
     GameObject Player;
     float distance;
@@ -19,10 +21,8 @@ public class ZombieBehaviour : MonoBehaviour
     bool canScream;
     bool isPlayerAudio = false;
     void Start()
-    { 
-        ZombieMoan.time = Random.Range(0,20);
-        ZombieMoan.Play();
-        audioSource.clip = Screams[Random.Range(0, Screams.Length - 1)];
+    {
+        RandomSounds();
         Player = GameObject.FindGameObjectWithTag("Player");
         //animator = GetComponent<Animator>();
         random = Random.Range(0, 100);
@@ -30,7 +30,8 @@ public class ZombieBehaviour : MonoBehaviour
         if (random > 50)
         { 
         
-          animator.SetBool("isWalking", true);
+          animator.SetBool(AnimationWalk[Random.Range(0, AnimationWalk.Length)], true);
+            
             canWalk = true;
         }
         if (random > 80 || random < 20)
@@ -52,6 +53,13 @@ public class ZombieBehaviour : MonoBehaviour
         {
             animator.SetBool("Attack", true);
             transform.LookAt(Player.transform.position);
+        }
+        if (distance < 18)
+        {
+            if (!ZombieMoan.isPlaying)
+            {
+                ZombieMoan.PlayDelayed(Random.Range(0, 3));
+            }
         }
         if (distance < 15 && canScream)
         {
@@ -93,5 +101,12 @@ public class ZombieBehaviour : MonoBehaviour
             capsul.enabled = false;
         }
             print("Hing Hing");
+    }
+    void RandomSounds()
+    {
+        ZombieMoan.clip = Moans[Random.Range(0, Moans.Length - 1)];
+        audioSource.clip = Screams[Random.Range(0, Screams.Length - 1)];
+
+
     }
 }

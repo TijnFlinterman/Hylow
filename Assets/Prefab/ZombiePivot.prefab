@@ -684,8 +684,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 27b9d73c7989e2841968846edeb531ed, type: 3}
   - {fileID: 8300000, guid: 40b4a9aba41eabb40a435cca05754577, type: 3}
   - {fileID: 8300000, guid: 320f6eb07e0d47c4a96b18caea0ffa5a, type: 3}
+  Moans:
+  - {fileID: 8300000, guid: c00015e7b5032324eb77a38e6971b807, type: 3}
+  - {fileID: 8300000, guid: 33448eef754000643988de4c6364f70a, type: 3}
+  - {fileID: 8300000, guid: 3c220484feaa3114f80a341d48afdd94, type: 3}
+  - {fileID: 8300000, guid: 91179f8010c4bbf4e96965903c970c82, type: 3}
+  - {fileID: 8300000, guid: 67ecb3620e8997841b1e95638d47b53b, type: 3}
+  - {fileID: 8300000, guid: 787768b13332a044da7ef34c2da50106, type: 3}
+  - {fileID: 8300000, guid: f8f1aa05c0cd8d74a8761c012ada26f6, type: 3}
   audioSource: {fileID: 8541103824121421704}
   ZombieMoan: {fileID: 8627617095720684516}
+  AnimationWalk:
+  - isWalking
+  - isWalkingD2
+  - isWalkingD3
 --- !u!82 &8541103824121421704
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2676,14 +2688,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 743add7db467df743882f445f64d8e09, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.209
+  m_PlayOnAwake: 0
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 203
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2721,7 +2733,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.466
+      value: 0.784
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2751,7 +2763,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
