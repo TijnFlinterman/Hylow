@@ -52,7 +52,10 @@ public class ZombieBehaviour : MonoBehaviour
         if (distance < 6 && canAttack)
         {
             animator.SetBool("Attack", true);
-            transform.LookAt(Player.transform.position);
+            if (distance > 3)
+            {
+                transform.LookAt(Player.transform.position);
+            }
         }
         if (distance < 18)
         {
@@ -65,12 +68,15 @@ public class ZombieBehaviour : MonoBehaviour
         {
             animator.SetBool("Scream", true);
             if (!isPlayerAudio)
-            { 
-            audioSource.Play();
-            isPlayerAudio = true;
-            
+            {
+                audioSource.Play();
+                isPlayerAudio = true;
+
             }
-            transform.LookAt(Player.transform.position);
+            if (distance > 3)
+            {
+                transform.LookAt(Player.transform.position);
+            }
         }
     }
     private void FixedUpdate()
@@ -84,7 +90,7 @@ public class ZombieBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.CompareTag("Chainsaw"))
+        if (coll.gameObject.CompareTag("Chainsaw") && distance > 3)
         {
             animator.SetBool("dead", true);
             Box.enabled = false;
@@ -94,7 +100,7 @@ public class ZombieBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Chainsaw"))
+        if (collision.gameObject.CompareTag("Chainsaw") && distance > 3)
         {
             animator.SetBool("dead", true);
             Box.enabled = false;

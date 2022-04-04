@@ -43,7 +43,7 @@ public class TreeSpawner : MonoBehaviour
         {
             float distance;
             distance = Vector3.Distance(currentObject.transform.position, spawnedObjects[i].transform.position);
-            if (distance < 4 && distance > 0)
+            if (distance < 2 && distance > 0)
             {
                 spawnedObjects.Remove(currentObject);
                 Destroy(currentObject);
