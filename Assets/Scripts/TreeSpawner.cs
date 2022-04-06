@@ -38,7 +38,7 @@ public class TreeSpawner : MonoBehaviour
             }
         }
         float canSpawnFuel = Random.Range(0, 100);
-        if (canSpawnFuel > 90)
+        if (canSpawnFuel > 90 && GameManager.main.canSpawnZombies)
         {
             for (int i = 0; i < fuelAmount; i++)
             {
