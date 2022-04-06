@@ -29,6 +29,14 @@ public class PlayerInteractions : MonoBehaviour
 
     private void OnTriggerEnter(Collider coll)
     {
+        if (coll.gameObject.tag == "Fuel")
+        {
+            if (GameManager.main._chainsaw.fuel < 5)
+            { 
+            GameManager.main._chainsaw.fuel++;
+            }
+            
+        }
         if (coll.gameObject.tag == "Zombie")
         {
           _camMovement.gotBumped = true;

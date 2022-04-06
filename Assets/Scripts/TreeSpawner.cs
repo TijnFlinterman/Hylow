@@ -5,9 +5,10 @@ using UnityEngine;
 public class TreeSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] Trees;
-    [SerializeField] GameObject zombiePre;
+    [SerializeField] GameObject zombiePre, fuelPre;
     [SerializeField] int treeAmount;
     [SerializeField] int zombieAmount;
+    [SerializeField] int fuelAmount =2;
     [SerializeField] int unitDisTerrain;
     [SerializeField] Transform pos;
     Vector3 spawnPos;
@@ -18,12 +19,13 @@ public class TreeSpawner : MonoBehaviour
     {
         treeAmount = GameManager.main._diffculty.spawnTreeAmount;
         zombieAmount = GameManager.main._diffculty.spawnZombieAmount;
+        fuelAmount = Random.Range(0, 3);
         for (int i = 0; i < treeAmount; i++)
         {
             spawnPos = new Vector3(Random.Range(pos.transform.position.x, pos.transform.position.x + unitDisTerrain), 0, Random.Range(pos.transform.position.z, pos.transform.position.z + unitDisTerrain));
             GameObject Go = Instantiate(Trees[Random.Range(0, Trees.Length)], spawnPos, Quaternion.identity);
             spawnedObjects.Add(Go);
-            posCheck(Go);
+            posCheck(Go,false);
         }
         if (GameManager.main.canSpawnZombies)
         {
@@ -32,12 +34,23 @@ public class TreeSpawner : MonoBehaviour
                 spawnPosZ = new Vector3(Random.Range(pos.transform.position.x, pos.transform.position.x + unitDisTerrain), 0, Random.Range(pos.transform.position.z, pos.transform.position.z + unitDisTerrain));
                 GameObject Go = Instantiate(zombiePre, spawnPosZ, Quaternion.identity);
                 spawnedObjects.Add(Go);
-                posCheck(Go);
+                posCheck(Go, false);
+            }
+        }
+        float canSpawnFuel = Random.Range(0, 100);
+        if (canSpawnFuel > 90)
+        {
+            for (int i = 0; i < fuelAmount; i++)
+            {
+                spawnPosZ = new Vector3(Random.Range(pos.transform.position.x, pos.transform.position.x + unitDisTerrain), 0, Random.Range(pos.transform.position.z, pos.transform.position.z + unitDisTerrain));
+                GameObject Go = Instantiate(fuelPre, spawnPosZ, Quaternion.identity);
+                spawnedObjects.Add(Go);
+                posCheck(Go, true);
             }
         }
     }
 
-    void posCheck(GameObject currentObject)
+    void posCheck(GameObject currentObject, bool fuel)
     {
         for (int i = 0; i < spawnedObjects.Count; i++)
         {
@@ -46,7 +59,15 @@ public class TreeSpawner : MonoBehaviour
             if (distance < 2 && distance > 0)
             {
                 spawnedObjects.Remove(currentObject);
-                Destroy(currentObject);
+                if (!fuel)
+                {
+                    Destroy(currentObject);
+                }
+                else
+                {
+                    Destroy(spawnedObjects[i]);
+                
+                }
             }
         }
     }

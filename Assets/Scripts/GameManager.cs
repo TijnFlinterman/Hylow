@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public bool canSpawnZombies;
    public  PlayerMovement Player;
     public Diffculty _diffculty;
+    public Chainsaw _chainsaw;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
         StartCoroutine(spawnZombies());
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        _chainsaw = GameObject.FindGameObjectWithTag("Chainsaw").GetComponent<Chainsaw>();
         _diffculty = GetComponent<Diffculty>();
     }
 

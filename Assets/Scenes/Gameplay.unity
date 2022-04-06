@@ -642,7 +642,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4562783021116783534, guid: d113536a117b3d744935781785fb1c01, type: 3}
       propertyPath: fuel
-      value: 500
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5649421118228288101, guid: d113536a117b3d744935781785fb1c01, type: 3}
       propertyPath: m_LocalRotation.w
