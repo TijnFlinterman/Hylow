@@ -2349,7 +2349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7914615635639431456, guid: d113536a117b3d744935781785fb1c01, type: 3}
       propertyPath: distance
-      value: 0.7
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7914615635639431456, guid: d113536a117b3d744935781785fb1c01, type: 3}
       propertyPath: forceForward
@@ -2815,7 +2815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3456034909958128877, guid: c2ca0e92757f3d84c95a50e7c26c04b9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3456034909958128879, guid: c2ca0e92757f3d84c95a50e7c26c04b9, type: 3}
       propertyPath: m_RootOrder

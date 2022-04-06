@@ -14,18 +14,19 @@ public class Scoring : MonoBehaviour
     {
         currentScore = 0;
         highScore = PlayerPrefs.GetFloat("HighScore");
-            highScoreText.text = PlayerPrefs.GetFloat("HighScore").ToString("0 " + "M");
+            highScoreText.text = PlayerPrefs.GetFloat("HighScore").ToString("0 " + "m");
     }
     public void Update()
     {
         currentEndScore = currentScore;
-        currentScoreText.text = currentScore.ToString("0 " + "M");
+        currentScoreText.text = currentScore.ToString("0 " + "m");
+        PlayerPrefs.SetFloat("HighestCurrentScore", currentEndScore);
 
         if (highScore < currentScore)
         {
             highScore = currentScore;
             PlayerPrefs.SetFloat("HighScore", highScore);
-            highScoreText.text = PlayerPrefs.GetFloat("HighScore").ToString("0 " + "M");
+            highScoreText.text = PlayerPrefs.GetFloat("HighScore").ToString("0 " + "m");
         }
     }
 }

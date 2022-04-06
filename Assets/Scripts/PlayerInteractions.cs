@@ -66,7 +66,6 @@ public class PlayerInteractions : MonoBehaviour
             }
             if (dist < distance)
             {
-                Debug.Log("Death");
                 SceneManager.LoadScene("DeathScreen");
             }
         }
@@ -76,7 +75,6 @@ public class PlayerInteractions : MonoBehaviour
             _camMovement.gotBumped = true;
             if (transform.position.x < coll.transform.position.x)
             {
-                Debug.Log("Left");
                 if (hasBumped == false)
                 {
                     _camMovement.bottem.eulerAngles = new Vector3(40,-25, 0);
@@ -87,7 +85,6 @@ public class PlayerInteractions : MonoBehaviour
             }
             if (transform.position.x > coll.transform.position.x)
             {
-                Debug.Log("Right");
                 if (hasBumped == false)
                 {
                     _camMovement.bottem.eulerAngles = new Vector3(40, 25, 0);
