@@ -90,7 +90,7 @@ public class ZombieBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.CompareTag("Chainsaw") && distance > 2)
+        if (coll.gameObject.CompareTag("Chainsaw") )
         {
             animator.SetBool("dead", true);
             Box.enabled = false;
@@ -100,7 +100,7 @@ public class ZombieBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Chainsaw") && distance > 2)
+        if (collision.gameObject.CompareTag("Chainsaw") )
         {
             animator.SetBool("dead", true);
             Box.enabled = false;

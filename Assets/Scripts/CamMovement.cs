@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using Cinemachine;
 public class CamMovement : MonoBehaviour
 {
     [SerializeField] GameObject cam;
@@ -7,7 +7,7 @@ public class CamMovement : MonoBehaviour
     public bool gotBumped;
     public bool isMoveing;
     public float lookUpSpeed;
-
+   [SerializeField] CinemachineVirtualCamera vcam;
     public void Tilt(int a)
     {
         switch (a)
@@ -39,8 +39,10 @@ public class CamMovement : MonoBehaviour
             case 4: //down
 
                 cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, bottem.rotation, 5f * Time.deltaTime);
+                vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 5;
                 if (cam.transform.rotation == bottem.rotation)
                 {
+                    vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
                     isMoveing = true;
                     lookUpSpeed = 3;
                     gotBumped = false;
