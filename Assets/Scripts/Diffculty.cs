@@ -19,7 +19,7 @@ public class Diffculty : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.main.Player.metersWalked > oldMetersWalked + 100)
+        if (GameManager.main.Player.metersWalked > oldMetersWalked + 250)
         {
             if (spawnZombieAmount < maxZombieAmount)
             {
