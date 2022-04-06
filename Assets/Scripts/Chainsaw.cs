@@ -5,7 +5,9 @@ using UnityEngine;
 public class Chainsaw : MonoBehaviour
 {
     [SerializeField]Animator ani;
+    [SerializeField] Animator CanvasAni;
     public int fuel;
+    public string[] blood;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +23,17 @@ public class Chainsaw : MonoBehaviour
          fuel --;
         }
     }
-   
+    private void OnCollisionEnter(Collision collision)
+    
+        
+    
+    {
+        if (collision.gameObject.tag == "Zombie")
+        {
+
+            CanvasAni.SetTrigger(blood[Random.Range(0, blood.Length)]);
+        
+        }
+    }
+
 }
