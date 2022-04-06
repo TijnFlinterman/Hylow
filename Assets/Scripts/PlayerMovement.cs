@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] [Range(0f, 10f)] float strafeSpeed = 5f;
     [SerializeField] GameObject cam;
     public CharacterController controller;
-    public Transform spawnPoint;
     public float metersWalked;
+
     public bool gotBumped;
     Vector3 velocity;
     CamMovement _camMovement;
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        metersWalked = Vector3.Distance(transform.position, spawnPoint.position);
+        metersWalked = this.transform.position.z;
     }
 
     private void FixedUpdate()
