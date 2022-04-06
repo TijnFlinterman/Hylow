@@ -19,6 +19,12 @@ public class LevelChanger : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelIndex);
     }
+
+    public void LoadGameplay()
+    {
+        StartCoroutine(LoadLevel(1));
+    }
+
     public void QuitGame()
     {
         Application.Quit();

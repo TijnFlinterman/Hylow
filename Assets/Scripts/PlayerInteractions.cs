@@ -33,7 +33,7 @@ public class PlayerInteractions : MonoBehaviour
         {
             if (GameManager.main._chainsaw.fuel < 5)
             { 
-            GameManager.main._chainsaw.fuel++;
+                GameManager.main._chainsaw.fuel++;
             }
             
         }
@@ -43,11 +43,8 @@ public class PlayerInteractions : MonoBehaviour
             dist = Vector3.Distance(transform.position, coll.transform.position);
             if (dist > distance)
             {
-                //Debug.Log("far hit, distance is: " + dist);
-
                 if (transform.position.x < coll.transform.position.x)
                 {
-                    Debug.Log("Left");
                     if (hasBumped == false)
                     {
                         _camMovement.bottem.eulerAngles = new Vector3(40, -25, 0);
@@ -58,7 +55,6 @@ public class PlayerInteractions : MonoBehaviour
                 }
                 if (transform.position.x > coll.transform.position.x)
                 {
-                    Debug.Log("Right");
                     if (hasBumped == false)
                     {
                         _camMovement.bottem.eulerAngles = new Vector3(40, 25, 0);
@@ -70,10 +66,8 @@ public class PlayerInteractions : MonoBehaviour
             }
             if (dist < distance)
             {
-                //Debug.Log("close hit, distance is: " + dist);
                 Debug.Log("Death");
-                SceneManager.LoadScene("PostGameMenu");
-
+                SceneManager.LoadScene("DeathScreen");
             }
         }
 
@@ -108,7 +102,7 @@ public class PlayerInteractions : MonoBehaviour
     public void AddImpact(Vector3 dir, float force)
     {
         dir.Normalize();
-        if (dir.y < 0) dir.y = -dir.y; // reflect down force on the ground
+        if (dir.y < 0) dir.y = -dir.y;
         impact += dir.normalized * force / mass;
     }
 

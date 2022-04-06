@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieBehaviour : MonoBehaviour
@@ -24,25 +22,20 @@ public class ZombieBehaviour : MonoBehaviour
     {
         RandomSounds();
         Player = GameObject.FindGameObjectWithTag("Player");
-        //animator = GetComponent<Animator>();
         random = Random.Range(0, 100);
         randomScream = Random.Range(0, 100);
         if (random > 50)
         { 
-        
-          animator.SetBool(AnimationWalk[Random.Range(0, AnimationWalk.Length)], true);
-            
+            animator.SetBool(AnimationWalk[Random.Range(0, AnimationWalk.Length)], true);
             canWalk = true;
         }
         if (random > 80 || random < 20)
         {
             canAttack = true;
-        
         }
         if (randomScream > 80 && canAttack == false)
         {
             canScream = true;
-        
         }
     }
 
@@ -71,7 +64,6 @@ public class ZombieBehaviour : MonoBehaviour
             {
                 audioSource.Play();
                 isPlayerAudio = true;
-
             }
             if (distance > 3)
             {
@@ -84,7 +76,6 @@ public class ZombieBehaviour : MonoBehaviour
 
         if (canWalk)
         {
-
             transform.Translate(new Vector3(0,0,0.5f) * Time.deltaTime);
         }
     }
@@ -96,7 +87,6 @@ public class ZombieBehaviour : MonoBehaviour
             Box.enabled = false;
             capsul.enabled = false;
         }
-            print("Hing Hing");
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -106,7 +96,6 @@ public class ZombieBehaviour : MonoBehaviour
             Box.enabled = false;
             capsul.enabled = false;
         }
-            print("Hing Hing");
     }
     void RandomSounds()
     {
