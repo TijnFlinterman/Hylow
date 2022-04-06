@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         metersWalked = this.transform.position.z;
+        Scoring.currentScore = metersWalked;
     }
 
     private void FixedUpdate()
