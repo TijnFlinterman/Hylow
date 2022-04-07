@@ -11,7 +11,7 @@ public class PlayerInteractions : MonoBehaviour
     PlayerMovement _playerMovement;
     CamMovement _camMovement;
     private CharacterController character;
-    float mass = 3.0F;
+    private float mass = 3.0f;
     Vector3 impact = Vector3.zero;
 
     void Start()

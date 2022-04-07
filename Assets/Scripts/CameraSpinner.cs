@@ -7,6 +7,5 @@ public class CameraSpinner : MonoBehaviour
     private void Update()
     {
         transform.Rotate(0,rotateAmount,0);
-
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Cinemachine;
+
 public class CamMovement : MonoBehaviour
 {
     [SerializeField] GameObject cam;
