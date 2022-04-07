@@ -9,12 +9,12 @@ public class Scoring : MonoBehaviour
 
     public Text currentScoreText;
     public Text highScoreText;
-    
+
     public void Start()
     {
         currentScore = 0;
         highScore = PlayerPrefs.GetFloat("HighScore");
-            highScoreText.text = PlayerPrefs.GetFloat("HighScore").ToString("0 " + "m");
+        highScoreText.text = PlayerPrefs.GetFloat("HighScore").ToString("0 " + "m");
     }
     public void Update()
     {

@@ -8,13 +8,13 @@ public class TreeSpawner : MonoBehaviour
     [SerializeField] GameObject zombiePre, fuelPre;
     [SerializeField] int treeAmount;
     [SerializeField] int zombieAmount;
-    [SerializeField] int fuelAmount =2;
+    [SerializeField] int fuelAmount = 2;
     [SerializeField] int unitDisTerrain;
     [SerializeField] Transform pos;
     Vector3 spawnPos;
     Vector3 spawnPosZ;
     public List<GameObject> spawnedObjects = new List<GameObject>();
-    // Start is called before the first frame update
+
     void Start()
     {
         treeAmount = GameManager.main._diffculty.spawnTreeAmount;
@@ -25,7 +25,7 @@ public class TreeSpawner : MonoBehaviour
             spawnPos = new Vector3(Random.Range(pos.transform.position.x, pos.transform.position.x + unitDisTerrain), 0, Random.Range(pos.transform.position.z, pos.transform.position.z + unitDisTerrain));
             GameObject Go = Instantiate(Trees[Random.Range(0, Trees.Length)], spawnPos, Quaternion.identity);
             spawnedObjects.Add(Go);
-            posCheck(Go,false);
+            posCheck(Go, false);
         }
         if (GameManager.main.canSpawnZombies)
         {
@@ -66,7 +66,6 @@ public class TreeSpawner : MonoBehaviour
                 else
                 {
                     Destroy(spawnedObjects[i]);
-                
                 }
             }
         }

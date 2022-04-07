@@ -35,8 +35,8 @@ public class PlayerInteractions : MonoBehaviour
             { 
                 GameManager.main._chainsaw.fuel++;
             }
-            
         }
+
         if (coll.gameObject.tag == "Zombie")
         {
           _camMovement.gotBumped = true;
@@ -64,6 +64,7 @@ public class PlayerInteractions : MonoBehaviour
                     }
                 }
             }
+
             if (dist < distance)
             {
                 SceneManager.LoadScene("DeathScreen");
@@ -83,6 +84,7 @@ public class PlayerInteractions : MonoBehaviour
                     hasBumped = true;
                 }
             }
+
             if (transform.position.x > coll.transform.position.x)
             {
                 if (hasBumped == false)

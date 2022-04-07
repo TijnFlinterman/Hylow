@@ -9,15 +9,16 @@ public class ZombieBehaviour : MonoBehaviour
     [SerializeField] AudioClip[] Moans;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioSource ZombieMoan;
-           int random;
+    private int random;
     [SerializeField] string[] AnimationWalk;
-       int randomScream;
+    private int randomScream;
     GameObject Player;
-    float distance;
-    bool canWalk;
-    bool canAttack;
-    bool canScream;
-    bool isPlayerAudio = false;
+    private float distance;
+    private bool canWalk;
+    private bool canAttack;
+    private bool canScream;
+    private bool isPlayerAudio = false;
+
     void Start()
     {
         RandomSounds();
@@ -25,7 +26,7 @@ public class ZombieBehaviour : MonoBehaviour
         random = Random.Range(0, 100);
         randomScream = Random.Range(0, 100);
         if (random > 50)
-        { 
+        {
             animator.SetBool(AnimationWalk[Random.Range(0, AnimationWalk.Length)], true);
             canWalk = true;
         }
@@ -73,15 +74,14 @@ public class ZombieBehaviour : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
         if (canWalk)
         {
-            transform.Translate(new Vector3(0,0,0.5f) * Time.deltaTime);
+            transform.Translate(new Vector3(0, 0, 0.5f) * Time.deltaTime);
         }
     }
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.CompareTag("Chainsaw") )
+        if (coll.gameObject.CompareTag("Chainsaw"))
         {
             animator.SetBool("dead", true);
             Box.enabled = false;
@@ -90,7 +90,7 @@ public class ZombieBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Chainsaw") )
+        if (collision.gameObject.CompareTag("Chainsaw"))
         {
             animator.SetBool("dead", true);
             Box.enabled = false;
@@ -101,7 +101,5 @@ public class ZombieBehaviour : MonoBehaviour
     {
         ZombieMoan.clip = Moans[Random.Range(0, Moans.Length - 1)];
         audioSource.clip = Screams[Random.Range(0, Screams.Length - 1)];
-
-
     }
 }

@@ -1,21 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TerrainControllerSimple : MonoBehaviour
 {
-
-    [SerializeField]
-    private GameObject terrainTilePrefab = null;
-    [SerializeField]
-    private Vector3 terrainSize = new Vector3(20, 1, 20);
-    [SerializeField]
-    private int radiusToRender = 5;
-    [SerializeField]
-    private Transform[] gameTransforms;
-    [SerializeField]
-    private Transform playerTransform;
+    [SerializeField] private GameObject terrainTilePrefab = null;
+    [SerializeField] private Vector3 terrainSize = new Vector3(20, 1, 20);
+    [SerializeField] private int radiusToRender = 5;
+    [SerializeField] private Transform[] gameTransforms;
+    [SerializeField] private Transform playerTransform;
 
     private Vector2 startOffset;
     private Dictionary<Vector2, GameObject> terrainTiles = new Dictionary<Vector2, GameObject>();
@@ -41,11 +33,9 @@ public class TerrainControllerSimple : MonoBehaviour
         foreach (Transform t in gameTransforms)
             centerTiles.Add(TileFromPosition(t.position));
 
-        //if no tiles exist yet or tiles should change
         if (previousCenterTiles == null || HaveTilesChanged(centerTiles))
         {
             List<GameObject> tileObjects = new List<GameObject>();
-            //activate new tiles
             foreach (Vector2 tile in centerTiles)
             {
                 bool isPlayerTile = tile == playerTile;

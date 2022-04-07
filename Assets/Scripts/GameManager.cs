@@ -1,22 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager main;
     public bool canSpawnZombies;
-   public  PlayerMovement Player;
+    public  PlayerMovement Player;
     public Diffculty _diffculty;
     public Chainsaw _chainsaw;
-    // Start is called before the first frame update
+
     void Start()
     {
-        //singleton pattern
         if (main == null)
         {
             main = this;
-            //DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
         StartCoroutine(spawnZombies());
@@ -25,15 +22,9 @@ public class GameManager : MonoBehaviour
         _diffculty = GetComponent<Diffculty>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     IEnumerator spawnZombies()
     {
         yield return new WaitForSeconds(0.2f);
-
         canSpawnZombies = true;
     }
 }
