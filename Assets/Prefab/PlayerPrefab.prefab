@@ -228,8 +228,10 @@ MonoBehaviour:
   strafeSpeed: 4.18
   cam: {fileID: 0}
   controller: {fileID: 7914615635639431470}
-  spawnPoint: {fileID: 0}
   metersWalked: 0
+  stepSize: 5
+  audioSource: {fileID: 0}
+  steps: []
   gotBumped: 0
 --- !u!114 &7914615635639431456
 MonoBehaviour:
@@ -243,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a0e25b6c002b141bf3be9c744eec28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 0.75
+  distance: 0.686
   forceSideways: 30
   forceForward: 10
 --- !u!143 &7914615635639431470
@@ -297,6 +299,7 @@ MonoBehaviour:
   gotBumped: 0
   isMoveing: 0
   lookUpSpeed: 0
+  vcam: {fileID: 0}
 --- !u!1 &7914615635930758886
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +392,6 @@ GameObject:
   - component: {fileID: 7914615636065609979}
   - component: {fileID: 7914615636065609977}
   - component: {fileID: 7914615636065609978}
-  - component: {fileID: 5259455247321665873}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -463,20 +465,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7914615636065609956}
   m_Enabled: 1
---- !u!114 &5259455247321665873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7914615636065609956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59aaa60b651409b449995a7a8e2fbd8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 5
-  speed: 0.7
 --- !u!1001 &6426217827803775092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,5 +651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5877d39b694f3a49bf33fc871f05448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ani: {fileID: 4034004765580741187}
+  animator: {fileID: 0}
+  CanvasAni: {fileID: 0}
   fuel: 5
+  fuelCounter: {fileID: 0}
+  blood: []

@@ -7,6 +7,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject cam;
     public CharacterController controller;
     public float metersWalked;
+    private float distanceFootstepCount;
+    public float stepSize = 5;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] steps;
 
     public bool gotBumped;
     Vector3 velocity;
@@ -19,6 +23,14 @@ public class PlayerMovement : MonoBehaviour
     {
         metersWalked = this.transform.position.z;
         Scoring.currentScore = metersWalked;
+
+        distanceFootstepCount += movementSpeed * Time.deltaTime;
+
+        if(distanceFootstepCount > stepSize)
+        {
+            distanceFootstepCount = 0;
+            audioSource.PlayOneShot(steps[Random.Range(0, steps.Length - 1)]);
+        }
     }
 
     private void FixedUpdate()
@@ -64,5 +76,10 @@ public class PlayerMovement : MonoBehaviour
                 _camMovement.Tilt(3);
             }
         }
+    }
+    public void Step(int _stepNumber)
+    {
+        audioSource.clip = steps[_stepNumber - 1];
+        audioSource.Play();
     }
 }
